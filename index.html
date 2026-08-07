@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC Service Rolde | Computerreparatie, computerbouw en upgrades</title>
+  <meta name="description" content="PC Service Rolde helpt met computerreparatie, laptopreparatie, computerbouw, onderhoud en upgrades in Rolde en omgeving.">
+  <meta name="keywords" content="PC Service Rolde, computer reparatie Rolde, laptop reparatie, computerbouw, SSD upgrade, RAM upgrade">
+  <meta name="author" content="PC Service Rolde">
+  <meta property="og:title" content="PC Service Rolde">
+  <meta property="og:description" content="Lokale computerreparatie, computerbouw, onderhoud en upgrades in Rolde.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    /* PC Service Rolde - one-file website met bewust meer persoonlijk, zelfgemaakt karakter. */
+    :root {
+      --navy: #0B1F3A;
+      --blue: #1E88E5;
+      --yellow: #FFD54F;
+      --white: #FFFFFF;
+      --gray: #202124;
+      --paper: #fffdf6;
+      --soft: #f3f7fb;
+      --line: #d7e1ec;
+      --shadow: 0 12px 28px rgba(11, 31, 58, .10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Poppins, system-ui, -apple-system, Segoe UI, sans-serif;
+      color: var(--gray);
+      background: linear-gradient(180deg, #fffdf6 0%, #ffffff 320px);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .container { width: min(1080px, 92%); margin-inline: auto; }
+    .skip-link { position: absolute; left: -999px; top: 8px; background: var(--yellow); color: var(--navy); padding: 10px 14px; border-radius: 10px; z-index: 100; }
+    .skip-link:focus { left: 8px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(255, 253, 246, .96);
+      border-bottom: 2px solid rgba(11, 31, 58, .10);
+      box-shadow: 0 3px 0 rgba(255, 213, 79, .45);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; color: var(--navy); text-decoration: none; white-space: nowrap; }
+    .logo-mark { display: grid; place-items: center; width: 42px; height: 42px; border: 2px solid var(--navy); border-radius: 12px; background: var(--yellow); color: var(--navy); transform: rotate(-3deg); }
+    .nav-menu { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+    .nav-menu a { display: block; padding: 9px 11px; border-radius: 12px; color: var(--navy); text-decoration: none; font-weight: 700; font-size: .93rem; }
+    .nav-menu a:hover, .nav-menu a.active { background: #e9f4ff; color: var(--blue); }
+    .nav-toggle { display: none; background: var(--white); border: 2px solid var(--navy); border-radius: 12px; padding: 7px; cursor: pointer; }
+    .nav-toggle span { display: block; width: 25px; height: 3px; background: var(--navy); margin: 5px; border-radius: 5px; }
+
+    .tech-bg {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 16% 20%, rgba(255, 213, 79, .22), transparent 28%), linear-gradient(135deg, #0B1F3A, #12345d);
+      color: var(--white);
+    }
+    .tech-bg:before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 38px 38px; }
+    .hero { padding: 108px 0 74px; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; gap: 34px; align-items: center; }
+    .eyebrow { color: var(--yellow); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; margin: 0 0 10px; }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 1; margin: 0 0 16px; }
+    .hero h1:after, .section-heading h2:after { content: ""; display: block; width: 112px; height: 8px; margin-top: 12px; background: var(--yellow); border-radius: 999px; transform: rotate(-1.5deg); }
+    .section-heading h2:after { margin-inline: auto; }
+    .subtitle { font-size: clamp(1.05rem, 2vw, 1.42rem); opacity: .95; max-width: 720px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .hero-panel { background: rgba(255,255,255,.11); border: 2px dashed rgba(255,255,255,.45); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+    .hero-panel div { padding: 15px 12px; border-bottom: 1px solid rgba(255,255,255,.18); }
+    .hero-panel div:last-child { border-bottom: 0; }
+    .hero-panel strong { display: block; font-size: 1.35rem; }
+    .hero-panel span { opacity: .9; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 2px solid transparent; border-radius: 14px; padding: 13px 20px; font-weight: 800; text-decoration: none; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px) rotate(-.4deg); box-shadow: 0 10px 18px rgba(30,136,229,.18); }
+    .btn-primary { background: var(--blue); color: var(--white); border-color: #126fc0; }
+    .btn-ghost { background: rgba(255,255,255,.12); color: var(--white); border-color: rgba(255,255,255,.35); }
+    .btn-small { padding: 9px 14px; background: var(--blue); color: var(--white); }
+    .btn-whatsapp { background: #25d366; color: var(--white); }
+
+    .section { padding: 74px 0; }
+    .section-alt { background: var(--soft); }
+    .section-heading { text-align: center; max-width: 760px; margin: 0 auto 36px; }
+    .section-heading h2, .content h2 { font-size: clamp(1.75rem, 3vw, 2.55rem); line-height: 1.16; color: var(--navy); margin: 0 0 12px; }
+    .grid { display: grid; gap: 20px; }
+    .four { grid-template-columns: repeat(4, 1fr); }
+    .three { grid-template-columns: repeat(3, 1fr); }
+    .services { grid-template-columns: repeat(3, 1fr); }
+
+    .card, .service-card, .review-card, .contact-card, .pro-form, .price-table, .form-note {
+      background: var(--white);
+      border: 2px solid rgba(11,31,58,.10);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: .22s;
+    }
+    .card:nth-child(odd), .service-card:nth-child(3n+1), .review-card:nth-child(2) { background: var(--paper); }
+    .card:hover, .service-card:hover, .review-card:hover { transform: translateY(-6px) rotate(-.35deg); }
+    .icon { font-size: 2.1rem; display: inline-block; margin-bottom: 9px; }
+    .card h3, .service-card h3 { color: var(--navy); margin: 0 0 8px; }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: center; }
+    .check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .check-list li { background: var(--white); border-left: 6px solid var(--yellow); border-radius: 14px; padding: 14px 16px; box-shadow: 0 8px 18px rgba(11,31,58,.08); font-weight: 700; }
+    .check-list li:before { content: "✓"; color: var(--blue); font-weight: 900; margin-right: 10px; }
+    .stars { color: #ffb400; letter-spacing: 2px; }
+    .faq details { background: var(--white); border-radius: 16px; padding: 18px 22px; margin: 12px 0; border: 2px solid rgba(11,31,58,.08); box-shadow: 0 8px 18px rgba(11,31,58,.07); }
+    summary { cursor: pointer; font-weight: 800; color: var(--navy); }
+
+    .price-table { max-width: 760px; margin: auto; padding: 0; overflow: hidden; }
+    .price-table div { display: flex; justify-content: space-between; gap: 22px; padding: 18px 24px; border-bottom: 1px solid #e8eef6; }
+    .price-table strong { color: var(--blue); }
+    .notice { max-width: 760px; margin: 20px auto; padding: 15px 18px; border-left: 6px solid var(--yellow); background: #fff8db; border-radius: 13px; }
+
+    .form-note { margin-bottom: 20px; background: #eef6ff; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .full { grid-column: 1 / -1; }
+    label { display: grid; gap: 7px; font-weight: 700; color: var(--navy); }
+    input, select, textarea { width: 100%; border: 2px solid var(--line); border-radius: 13px; padding: 12px 13px; font: inherit; background: var(--white); }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(30,136,229,.16); border-color: var(--blue); }
+    .checkbox { display: flex; align-items: center; gap: 10px; margin: 18px 0; }
+    .checkbox input { width: auto; }
+    .form-status { font-weight: 800; }
+    .form-status.success { color: #0b7a38; }
+    .form-status.error { color: #b42318; }
+
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; }
+    .map-wrap { height: 270px; border-radius: 16px; overflow: hidden; margin-top: 18px; background: #dbe6f2; border: 2px solid var(--line); }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+    .privacy { max-width: 900px; }
+    .privacy h3 { color: var(--navy); margin-top: 26px; }
+
+    .footer { background: var(--navy); color: #dbe8f6; padding: 48px 0 22px; }
+    .footer .logo { color: var(--white); }
+    .footer a { color: var(--white); }
+    .footer-grid { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr; gap: 26px; }
+    .socials a { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: rgba(255,255,255,.10); margin-right: 7px; text-decoration: none; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.13); margin-top: 26px; padding-top: 16px; font-size: .92rem; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 980px) { .nav-toggle { display: block; } .nav-menu { position: absolute; left: 4%; right: 4%; top: 78px; display: none; flex-direction: column; align-items: stretch; background: var(--paper); border: 2px solid rgba(11,31,58,.12); border-radius: 20px; padding: 14px; box-shadow: var(--shadow); } .nav-menu.open { display: flex; } .hero-grid, .split, .contact-grid { grid-template-columns: 1fr; } .four, .three, .services { grid-template-columns: repeat(2, 1fr); } .hero { padding: 96px 0 68px; } }
+    @media (max-width: 640px) { .four, .three, .services, .form-grid, .footer-grid { grid-template-columns: 1fr; } .section { padding: 58px 0; } .btn { width: 100%; } .price-table div { flex-direction: column; } .hero h1 { font-size: 2.9rem; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direct naar inhoud</a>
+  <header class="site-header" data-header>
+    <nav class="nav container" aria-label="Hoofdnavigatie">
+      <a class="logo" href="#home" aria-label="PC Service Rolde home"><span class="logo-mark">PC</span><span>Service Rolde</span></a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Menu openen" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="nav-menu" data-nav-menu>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#prijzen">Prijzen</a></li>
+        <li><a href="#afspraak">Afspraak maken</a></li>
+        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero tech-bg">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Lokale IT-hulp in Rolde</p>
+          <h1>PC Service Rolde</h1>
+          <p class="subtitle">Computerreparatie • Computerbouw • Onderhoud • Upgrades</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#afspraak">Maak direct een afspraak</a><a class="btn btn-ghost" href="#diensten">Bekijk diensten</a></div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="Service voordelen">
+          <div><strong>24-48u</strong><span>snelle diagnose waar mogelijk</span></div>
+          <div><strong>Transparant</strong><span>duidelijke prijzen vooraf</span></div>
+          <div><strong>Lokaal</strong><span>persoonlijke service in Rolde</span></div>
+          <div><strong>Gewoon helder</strong><span>geen moeilijke taal, wel eerlijk advies</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" aria-labelledby="intro-title">
+      <div class="section-heading reveal"><p class="eyebrow">Onze specialisaties</p><h2 id="intro-title">Waarmee kunnen we helpen?</h2></div>
+      <div class="grid four">
+        <article class="card reveal"><span class="icon">🖥️</span><h3>Computer reparatie</h3><p>Storingen, trage systemen en hardwareproblemen professioneel opgelost.</p></article>
+        <article class="card reveal"><span class="icon">💻</span><h3>Laptop reparatie</h3><p>Onderzoek, onderhoud, upgrades en herstel voor laptops van alle merken.</p></article>
+        <article class="card reveal"><span class="icon">🧩</span><h3>Computerbouw</h3><p>Nieuwe pc op maat voor werk, studie, gaming of creatief gebruik.</p></article>
+        <article class="card reveal"><span class="icon">⚡</span><h3>Upgrades</h3><p>Meer snelheid met SSD, RAM, koeling en slimme optimalisaties.</p></article>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="why-title">
+      <div class="container split">
+        <div class="content reveal"><p class="eyebrow">Waarom kiezen voor ons?</p><h2 id="why-title">Betrouwbare computerhulp dichtbij</h2><p>PC Service Rolde combineert technische kennis met persoonlijke service. U krijgt helder advies, duidelijke afspraken en oplossingen die passen bij uw situatie.</p></div>
+        <ul class="check-list reveal"><li>Snelle service</li><li>Eerlijke prijzen</li><li>Persoonlijk advies</li><li>Lokale service in Rolde</li><li>Betrouwbaar</li></ul>
+      </div>
+    </section>
+
+    <section id="diensten" class="section container" aria-labelledby="services-title">
+      <div class="section-heading reveal"><p class="eyebrow">Diensten</p><h2 id="services-title">Professionele IT-service voor thuis en kantoor</h2><p>Iedere dienst is gericht op een snelle, nette en duurzame oplossing.</p></div>
+      <div class="grid services">
+        <article class="service-card reveal"><span class="icon">🖥️</span><h3>Computer reparatie</h3><p>Diagnose en herstel van desktopproblemen, opstartfouten en defecte onderdelen.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">💻</span><h3>Laptop reparatie</h3><p>Onderhoud, softwareherstel en upgrades voor laptops van bekende merken.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🚀</span><h3>SSD upgrades</h3><p>Maak uw computer sneller met een moderne SSD en correcte data-overzetting.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🧠</span><h3>RAM upgrades</h3><p>Meer werkgeheugen voor soepel multitasken, studie, werk en gaming.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🛡️</span><h3>Virus verwijderen</h3><p>Malware opsporen, verwijderen en uw systeem beter beveiligen.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🪟</span><h3>Windows installeren</h3><p>Schone Windows-installatie inclusief basisconfiguratie en updates.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">📦</span><h3>Data overzetten</h3><p>Bestanden veilig overzetten naar een nieuwe computer, laptop of schijf.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🎮</span><h3>Game PC bouwen</h3><p>Advies, assemblage, kabelmanagement en installatie van uw nieuwe game-pc.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🌡️</span><h3>Koelpasta vervangen</h3><p>Betere warmteoverdracht voor stillere en koelere prestaties.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+        <article class="service-card reveal"><span class="icon">🧹</span><h3>Computer schoonmaken</h3><p>Stofvrij maken, airflow verbeteren en preventief onderhoud uitvoeren.</p><a class="btn btn-small" href="#afspraak">Afspraak maken</a></article>
+      </div>
+    </section>
+
+    <section id="prijzen" class="section section-alt" aria-labelledby="prices-title">
+      <div class="container">
+        <div class="section-heading reveal"><p class="eyebrow">Prijzen</p><h2 id="prices-title">Duidelijke tarieven zonder verrassingen</h2></div>
+        <div class="price-table reveal"><div><span>Diagnose</span><strong>€20</strong></div><div><span>Windows installeren</span><strong>€35</strong></div><div><span>SSD plaatsen</span><strong>€25</strong></div><div><span>RAM plaatsen</span><strong>€20</strong></div><div><span>Computer schoonmaken</span><strong>€30</strong></div><div><span>Koelpasta vervangen</span><strong>€25</strong></div><div><span>Game PC bouwen</span><strong>vanaf €60</strong></div></div>
+        <p class="notice reveal">Prijzen kunnen afwijken afhankelijk van de werkzaamheden.</p>
+      </div>
+    </section>
+
+    <section class="section container" aria-labelledby="reviews-title">
+      <div class="section-heading reveal"><p class="eyebrow">Ervaringen</p><h2 id="reviews-title">Reviews van klanten</h2></div>
+      <div class="grid three">
+        <article class="review-card reveal"><div class="stars">★★★★★</div><p>“Mijn laptop startte niet meer op. Snel geholpen en alles werkt weer perfect.”</p><strong>Marieke uit Rolde</strong></article>
+        <article class="review-card reveal"><div class="stars">★★★★★</div><p>“Duidelijke uitleg en eerlijke prijs voor een SSD-upgrade. Mijn pc is weer razendsnel.”</p><strong>Jan uit Assen</strong></article>
+        <article class="review-card reveal"><div class="stars">★★★★★</div><p>“Nieuwe game-pc laten bouwen. Netjes afgewerkt en goed advies over onderdelen.”</p><strong>Thomas uit Grolloo</strong></article>
+      </div>
+    </section>
+
+    <section id="afspraak" class="section section-alt" aria-labelledby="appointment-title">
+      <div class="container">
+        <div class="section-heading reveal"><p class="eyebrow">Afspraak maken</p><h2 id="appointment-title">Vraag eenvoudig computerhulp aan</h2><p>Vul het formulier in. Na verzending ontvangt u een nette bevestiging op het scherm.</p></div>
+        <div class="form-note reveal"><strong>EmailJS instellen:</strong> open dit ene bestand <code>index.html</code> en vul bovenaan in het script onderaan de pagina de waarden <code>SERVICE_ID</code>, <code>TEMPLATE_ID</code> en <code>PUBLIC_KEY</code> in. Daarna werkt het formulier direct.</div>
+        <form class="pro-form reveal" id="appointmentForm"><div class="form-grid"><label>Voornaam<input name="voornaam" autocomplete="given-name" required></label><label>Achternaam<input name="achternaam" autocomplete="family-name" required></label><label>E-mailadres<input type="email" name="email" autocomplete="email" required></label><label>Telefoonnummer<input type="tel" name="telefoon" autocomplete="tel" required></label><label>Straat<input name="straat" autocomplete="address-line1" required></label><label>Postcode<input name="postcode" autocomplete="postal-code" required></label><label>Plaats<input name="plaats" autocomplete="address-level2" required></label><label>Dienst<select name="dienst" required><option value="">Kies een dienst</option><option>Computer reparatie</option><option>Laptop reparatie</option><option>SSD upgrade</option><option>RAM upgrade</option><option>Virus verwijderen</option><option>Windows installeren</option><option>Data overzetten</option><option>Game PC bouwen</option><option>Koelpasta vervangen</option><option>Computer schoonmaken</option></select></label><label>Datum<input type="date" name="datum" required></label><label>Tijd<input type="time" name="tijd" required></label><label class="full">Beschrijving probleem<textarea name="beschrijving" rows="5" required></textarea></label><label class="full">Bestand uploaden<input type="file" name="bestand" accept="image/*,.pdf,.doc,.docx"></label></div><label class="checkbox"><input type="checkbox" name="privacy" required> Ik ga akkoord met de <a href="#privacy">privacyverklaring</a>.</label><button class="btn btn-primary" type="submit">Afspraak aanvragen</button><p class="form-status" id="formStatus" role="status" aria-live="polite"></p></form>
+      </div>
+    </section>
+
+    <section id="over-ons" class="section container" aria-labelledby="about-title">
+      <div class="split"><div class="content reveal"><p class="eyebrow">Over ons</p><h2 id="about-title">Lokale service met persoonlijke aandacht</h2><p>PC Service Rolde is een lokaal computerbedrijf dat zich richt op computer reparaties, laptop reparaties, computerbouw, upgrades en persoonlijke service.</p><p>We denken mee met de klant, leggen keuzes duidelijk uit en zoeken altijd naar een praktische oplossing met een eerlijke prijs.</p></div><ul class="check-list reveal"><li>Computer reparaties</li><li>Laptop reparaties</li><li>Computerbouw</li><li>Upgrades</li><li>Persoonlijke service</li></ul></div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="faq-title">
+      <div class="container"><div class="section-heading reveal"><p class="eyebrow">FAQ</p><h2 id="faq-title">Veelgestelde vragen</h2></div><div class="faq"><details class="reveal"><summary>Hoe snel kan ik terecht?</summary><p>Meestal kan er binnen enkele werkdagen een diagnose of afspraak worden ingepland.</p></details><details class="reveal"><summary>Repareert u ook laptops?</summary><p>Ja, wij helpen met laptopdiagnose, onderhoud, upgrades en softwareproblemen.</p></details><details class="reveal"><summary>Kan ik zelf onderdelen aanleveren?</summary><p>Dat kan vaak. We controleren vooraf of de onderdelen geschikt zijn.</p></details></div></div>
+    </section>
+
+    <section id="contact" class="section container contact-grid" aria-labelledby="contact-title">
+      <div class="contact-card reveal"><p class="eyebrow">Contact</p><h2 id="contact-title">Neem contact op</h2><p>📞 [telefoonnummer]</p><p>✉️ [e-mailadres]</p><p>📍 [adres placeholder], Rolde</p><a class="btn btn-whatsapp" href="https://wa.me/31000000000">WhatsApp sturen</a><div class="map-wrap"><iframe title="Google Maps locatie PC Service Rolde" loading="lazy" src="https://www.google.com/maps?q=Rolde&output=embed"></iframe></div></div>
+      <form class="pro-form reveal" id="contactForm"><h2>Contactformulier</h2><div class="form-grid"><label>Naam<input name="naam" required></label><label>E-mailadres<input type="email" name="contact_email" required></label><label class="full">Bericht<textarea name="bericht" rows="5" required></textarea></label></div><button class="btn btn-primary" type="submit">Bericht verzenden</button><p class="form-status" id="contactStatus" role="status" aria-live="polite"></p></form>
+    </section>
+
+    <section id="privacy" class="section section-alt" aria-labelledby="privacy-title">
+      <div class="container privacy reveal"><p class="eyebrow">Privacyverklaring</p><h2 id="privacy-title">Zorgvuldig omgaan met uw gegevens</h2><p>PC Service Rolde verwerkt persoonsgegevens uitsluitend om aanvragen te behandelen, afspraken te plannen en service te leveren.</p><h3>Welke gegevens verwerken wij?</h3><p>Naam, contactgegevens, adresgegevens, gekozen dienst, afspraakdatum, probleembeschrijving en eventueel meegestuurde bestanden.</p><h3>Waarom verwerken wij gegevens?</h3><p>Wij gebruiken gegevens voor communicatie, planning, uitvoering van werkzaamheden, administratie en verbetering van onze dienstverlening.</p><h3>Bewaartermijn</h3><p>Gegevens worden niet langer bewaard dan nodig is voor het doel waarvoor ze zijn ontvangen, tenzij wettelijke verplichtingen een langere termijn vereisen.</p><h3>Delen met derden</h3><p>Gegevens worden niet verkocht. Alleen wanneer dit nodig is voor dienstverlening of wettelijke verplichtingen kunnen gegevens worden gedeeld.</p><h3>Uw rechten</h3><p>U kunt vragen om inzage, correctie of verwijdering van uw persoonsgegevens via [e-mailadres].</p><h3>Beveiliging</h3><p>Wij nemen passende technische en organisatorische maatregelen om gegevens te beschermen.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid"><div><a class="logo" href="#home"><span class="logo-mark">PC</span><span>Service Rolde</span></a><p>Computerreparatie, computerbouw en upgrades in Rolde.</p></div><div><h3>Openingstijden</h3><p>Ma-vr: 09:00 - 18:00<br>Za: op afspraak</p></div><div><h3>Contact</h3><p>Telefoon: [telefoonnummer]<br>E-mail: [e-mailadres]</p></div><div><h3>Social media</h3><p class="socials"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="LinkedIn">in</a></p></div></div>
+    <div class="container copyright">© <span data-year></span> PC Service Rolde. Alle rechten voorbehouden.</div>
+  </footer>
+
+  <script>
+    // EmailJS placeholders: vervang deze drie waarden in ditzelfde index.html bestand.
+    const EMAILJS_SERVICE_ID = 'SERVICE_ID';
+    const EMAILJS_TEMPLATE_ID = 'TEMPLATE_ID';
+    const EMAILJS_PUBLIC_KEY = 'PUBLIC_KEY';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('[data-nav-toggle]');
+      const navMenu = document.querySelector('[data-nav-menu]');
+      const header = document.querySelector('[data-header]');
+      const navLinks = document.querySelectorAll('.nav-menu a');
+
+      navToggle?.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      navLinks.forEach((link) => link.addEventListener('click', () => navMenu?.classList.remove('open')));
+
+      const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 20);
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      document.querySelectorAll('[data-year]').forEach((node) => { node.textContent = new Date().getFullYear(); });
+
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.14 });
+        revealItems.forEach((item) => observer.observe(item));
+      } else { revealItems.forEach((item) => item.classList.add('visible')); }
+
+      if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'PUBLIC_KEY') window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      setupEmailForm('appointmentForm', 'formStatus', 'Bedankt! Uw afspraakaanvraag is succesvol verzonden. We nemen zo snel mogelijk contact op.');
+      setupEmailForm('contactForm', 'contactStatus', 'Bedankt! Uw bericht is succesvol verzonden. We reageren zo snel mogelijk.');
+    });
+
+    async function setupEmailForm(formId, statusId, successMessage) {
+      const form = document.getElementById(formId);
+      const status = document.getElementById(statusId);
+      if (!form || !status) return;
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        status.className = 'form-status';
+        status.textContent = 'Uw aanvraag wordt verzonden...';
+        const missingConfig = !window.emailjs || [EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY].some((value) => value.includes('_ID') || value === 'PUBLIC_KEY');
+        if (missingConfig) { status.classList.add('error'); status.textContent = 'EmailJS is nog niet ingesteld. Vul SERVICE_ID, TEMPLATE_ID en PUBLIC_KEY bovenaan het script in index.html in.'; return; }
+        try { await window.emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form); form.reset(); status.classList.add('success'); status.textContent = successMessage; }
+        catch (error) { status.classList.add('error'); status.textContent = 'Er ging iets mis bij het verzenden. Controleer de gegevens of probeer het later opnieuw.'; console.error('EmailJS verzendfout:', error); }
+      });
+    }
+  </script>
+</body>
+</html>
